@@ -130,48 +130,320 @@
       /* --- HERO --- */
       .hero {
         height: calc(100vh - 85px);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
         align-items: center;
-        background: var(--bg-dark);
-        text-align: center;
-        padding: 0 20px;
+        gap: 2rem;
+        background: linear-gradient(140deg, #2e0202 0%, #6a0a0a 35%, #b92d28 100%);
+        color: #fff;
+        padding: 120px 60px 40px;
+        min-height: 90vh;
       }
-      .mask {
-        overflow: hidden;
-        display: block;
+      .hero-content {
+        max-width: 620px;
+      }
+      .hero-subtitle {
+        color: #ff6b6b;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        font-weight: 700;
       }
       .hero h1 {
         font-family: "Poppins";
-        font-size: clamp(2.5rem, 8vw, 5.5rem);
+        font-size: clamp(2rem, 5.8vw, 4.6rem);
         font-weight: 900;
-        line-height: 1.1;
-        color: #fff;
-        text-transform: uppercase;
+        line-height: 1.06;
+        margin-bottom: 20px;
+        letter-spacing: -1px;
       }
       .hero h1 span {
         color: transparent;
-        -webkit-text-stroke: 2px var(--primary-red);
+        -webkit-text-stroke: 1px var(--primary-red);
       }
       .hero p {
-        font-size: 1.2rem;
-        color: #aaa;
-        max-width: 700px;
-        margin: 25px 0 40px;
+        font-size: 1rem;
+        color: #d0d4dd;
+        max-width: 640px;
+        margin-bottom: 24px;
         line-height: 1.6;
         opacity: 0;
       }
       .btn-main {
-        background: var(--primary-red);
+        background: linear-gradient(130deg, #ff3b3b, #ff5f7b);
         color: #fff;
-        padding: 18px 45px;
-        border-radius: 4px;
+        padding: 15px 30px;
+        border-radius: 999px;
         text-decoration: none;
         font-weight: 800;
         font-family: "Poppins";
-        transition: 0.3s;
+        transition: transform .2s ease, box-shadow .2s ease;
         display: inline-block;
+        box-shadow: 0 12px 30px rgba(255, 59, 59, .35);
+      }
+      .btn-main:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 35px rgba(255, 59, 59, .45);
+      }
+      .hero-robot-wrap {
+        width: min(500px, 100%);
+        margin: 0 auto;
+        perspective: 1200px;
+        position: relative;
+      }
+      .hero-robot {
+        width: 230px;
+        margin: 0 auto;
+        transform-style: preserve-3d;
+        transform: rotateX(20deg) rotateY(-15deg);
+        animation: float 4.5s ease-in-out infinite;
+        transition: transform .15s ease;
+      }
+      .robot-part {
+        position: absolute;
+        left: 50%;
+        transform-style: preserve-3d;
+        transform: translateX(-50%);
+        border-radius: 12px;
+        background: linear-gradient(180deg, #2a2d38 0%, #121623 100%);
+        border: 1px solid rgba(255,255,255,.08);
+        box-shadow: 0 18px 35px rgba(0,0,0,.4), 0 0 20px rgba(255,71,71,0.22);
+      }
+      .robot-head {
+        top: 0;
+        width: 140px;
+        height: 100px;
+      }
+      .robot-eye {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 5px #fff;
+      }
+      .robot-eye.left { left: 35px; top: 40px; }
+      .robot-eye.right { right: 35px; top: 40px; }
+      .robot-body {
+        width: 180px;
+        height: 150px;
+        top: 90px;
+      }
+      .robot-core {
+        position: absolute;
+        width: 70px;
+        height: 45px;
+        top: 55px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: linear-gradient(120deg, #ff4e4e 0%, #ff7a7a 100%);
+        box-shadow: 0 0 24px rgba(255, 79, 79, 0.6);
+      }
+      .robot-leg {
+        width: 25px;
+        height: 60px;
+        bottom: -60px;
+        border-radius: 10px;
+        background: #1f222d;
+      }
+      .robot-leg.left { left: 28%; }
+      .robot-leg.right { right: 28%; }
+      .hero-robot-panels {
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 176px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .robot-panel {
+        width: 34px;
+        height: 20px;
+        border-radius: 4px;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+      }
+      .robot-glow {
+        position: absolute;
+        inset: -50px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 50%, rgba(255, 59, 59, 0.35), transparent 58%);
+        z-index: -1;
+        filter: blur(2px);
+      }
+      .hero-meta {
+        display: flex;
+        gap: 10px;
+        margin-top: 14px;
+        color: #bbbec8;
+        font-size: .85rem;
+      }
+      .hero-chip {
+        border: 1px solid rgba(255,255,255,0.15);
+        background: rgba(255,255,255,0.05);
+        border-radius: 999px;
+        padding: 6px 10px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+      }
+      @keyframes float {
+        0%, 100% { transform: rotateX(20deg) rotateY(-15deg) translateY(0px); }
+        50% { transform: rotateX(20deg) rotateY(-15deg) translateY(-8px); }
+      }
+
+      /* --- CONTACT --- */
+      .contact-page {
+        min-height: calc(100vh - 85px);
+        padding: 100px 5% 60px;
+        background: #090a0f;
+        color: white;
+      }
+      .auth-page {
+        min-height: calc(100vh - 85px);
+        padding: 80px 5% 50px;
+        background: linear-gradient(140deg, #100a12 0%, #180f1f 35%, #231730 100%);
+        color: #fff;
+        display: grid;
+        place-items: center;
+      }
+      .auth-card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 18px;
+        width: min(500px, 92%);
+        padding: 28px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+      }
+      .auth-card h2 {
+        color: #fff;
+        margin-bottom: 14px;
+      }
+      .auth-card p {
+        color: #d0d4dd;
+        margin-bottom: 20px;
+      }
+      .auth-input {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.15);
+        background: #151d2a;
+        color: #f3f4f8;
+        padding: 10px 12px;
+        margin-bottom: 14px;
+      }
+      .auth-btn {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        padding: 12px;
+        background: linear-gradient(120deg, #ff3d3d, #ff6f6f);
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .auth-bottom-text {
+        margin-top: 12px;
+        font-size: .9rem;
+        color: #b8bcc7;
+      }
+      .auth-bottom-text a { color: #ff7a7a; text-decoration: none; }
+      .contact-inner {
+        max-width: 980px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        align-items: start;
+      }
+      .contact-hero {
+        background: linear-gradient(180deg, #161a28, #0e111c);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 20px;
+        padding: 32px;
+      }
+      .contact-hero h2 { margin-bottom: 12px; color: #fff; }
+      .contact-hero p { color: #c2c6d1; line-height: 1.6; }
+      .contact-form {
+        background: #111426;
+        border-radius: 20px;
+        padding: 24px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .contact-form label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: .88rem;
+        color: #d2d7e4;
+        margin-top: 12px;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: #111b2a;
+        color: #f3f4f8;
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-size: .95rem;
+      }
+      .contact-form textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+      .contact-form button {
+        margin-top: 14px;
+        padding: 12px 18px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(120deg, #ff3b3b, #ff7780);
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      /* --- FOOTER --- */
+      .site-footer {
+        background: #07070d;
+        color: #c3c6d0;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding: 32px 5%;
+        text-align: center;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: left;
+      }
+      .footer-grid h4 {
+        margin-bottom: 12px;
+        color: #fff;
+      }
+      .footer-links a {
+        display: block;
+        color: #aaa;
+        text-decoration: none;
+        margin-bottom: 8px;
+      }
+      .footer-bottom {
+        margin-top: 20px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding-top: 14px;
+        color: #9094a5;
+        font-size: .9rem;
+      }
+      @media (max-width: 900px) {
+        .hero { grid-template-columns: 1fr; padding: 110px 18px 40px; height: auto; }
+        .hero-robot-wrap { margin-top: 20px; }
+        .contact-inner { grid-template-columns: 1fr; }
+        .footer-grid { grid-template-columns: 1fr; }
       }
 
       /* --- HOW WE WORK --- */
@@ -451,10 +723,63 @@
         margin-top: 30px;
         opacity: 0;
       }
-      .story-section {
-        padding: 100px 10%;
-        background: #fcfcfc;
+      .about-solutions, .about-process {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 80px 5%;
       }
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+        gap: 20px;
+      }
+      .solution-card {
+        background: #101426;
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 16px;
+        padding: 18px;
+      }
+      .solution-card h3 { color: #fff; margin-bottom: 8px; }
+      .solution-card p { color: #c8ceed; font-size: .95rem; line-height: 1.5; }
+      .timeline-root {
+        background: #0d0f1f;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,.07);
+        padding: 30px;
+        margin-top: 12px;
+      }
+      .timeline-list {
+        display: grid;
+        gap: 14px;
+      }
+      .timeline-item {
+        background: #10162a;
+        border-left: 4px solid #ff3b3b;
+        border-radius: 12px;
+        padding: 12px 14px;
+      }
+      .timeline-item time {
+        font-size: .75rem;
+        color: #f0a3a3;
+        letter-spacing: .4px;
+        text-transform: uppercase;
+      }
+      .timeline-item h4 { margin: 8px 0 4px; color: #fff; }
+      .timeline-item p { color: #d1d6e3; font-size: .92rem; line-height: 1.4; }
+      .process-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+        gap: 18px;
+        margin-top: 20px;
+      }
+      .step-box {
+        background: #121830;
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 14px;
+        padding: 18px;
+      }
+      .step-box h3 { color: #fff; font-size: 1.05rem; margin-bottom: 8px; }
+      .step-box p { color: #d0d4de; line-height: 1.5; font-size: .9rem; }
       .story-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -498,7 +823,7 @@
 
       /* --- SERVICES --- */
       .services-section {
-        background: var(--bg-dark);
+        background: linear-gradient(120deg, #3f0707 0%, #8f1d1d 45%, #bd4949 100%);
         padding: 100px 5%;
         color: white;
       }
@@ -827,52 +1152,91 @@
           <span class="logo-sub">Soft Solutions</span>
         </a>
         <ul class="nav-links">
-          <li>
-            <a
-              href="#"
-              class="nav-link active"
-              id="link-home"
-              onclick="showPage('home')"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="nav-link"
-              id="link-about"
-              onclick="showPage('about')"
-              >About</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="nav-link"
-              id="link-services"
-              onclick="showPage('services')"
-              >Services</a
-            >
-          </li>
-          <li><a href="#" class="nav-link">Contact</a></li>
-          <li><a href="#" class="nav-link nav-login-btn">Login</a></li>
+          <li><a href="#" class="nav-link active" id="link-home" onclick="showPage('home')">Home</a></li>
+          <li><a href="#" class="nav-link" id="link-about" onclick="showPage('about')">About</a></li>
+          <li><a href="#" class="nav-link" id="link-services" onclick="showPage('services')">Services</a></li>
+          <li><a href="#" class="nav-link" id="link-contact" onclick="showPage('contact')">Contact</a></li>
+          <li><a href="#" class="nav-link" id="link-login" onclick="showPage('login')">Sign In</a></li>
+          <li><a href="#" class="nav-link nav-login-btn" id="link-register" onclick="showPage('register')">Create Account</a></li>
         </ul>
       </div>
     </nav>
 
     <div id="home" class="page active-page">
-      <section class="hero">
-        <div class="mask"><h1 class="hero-reveal">Making Connections</h1></div>
-        <div class="mask">
-          <h1 class="hero-reveal"><span>Delivering Results</span></h1>
+      <section class="hero" id="home-hero">
+        <div class="hero-content">
+          <p class="hero-subtitle">LUXURY TECH AGENCY</p>
+          <h1>Commanding Digital Growth With Precision Engineering</h1>
+          <p id="hero-p">
+            We craft elite digital experiences and growth engines for visionary
+            founders. Premium design, ROI-focused engineering, and powerful
+            performance at scale.
+          </p>
+          <div class="hero-meta">
+            <div class="hero-chip"><i class="fas fa-bolt"></i> 24/7 Performance</div>
+            <div class="hero-chip"><i class="fas fa-shield-alt"></i> Enterprise Security</div>
+          </div>
+          <div style="margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="#" class="btn-main" onclick="showPage('services')">Explore Expertise</a>
+            <a href="#" class="btn-main" style="background:#1b1f2d; box-shadow: 0 10px 24px rgba(0,0,0,.35);">Book Strategy Call</a>
+          </div>
         </div>
-        <p id="hero-p">
-          Elevate your brand with data-driven social marketing and software
-          excellence.
-        </p>
-        <a href="#" class="btn-main" onclick="showPage('services')"
-          >Explore Expertise</a
-        >
+        <div class="hero-robot-wrap" id="robotWrap">
+          <div class="robot-glow"></div>
+          <div class="hero-robot" id="robot">
+            <div class="robot-part robot-head">
+              <div class="robot-eye left"></div>
+              <div class="robot-eye right"></div>
+            </div>
+            <div class="robot-part robot-body">
+              <div class="hero-robot-panels">
+                <div class="robot-panel"></div>
+                <div class="robot-panel"></div>
+                <div class="robot-panel"></div>
+              </div>
+              <div class="robot-core"></div>
+              <div class="robot-leg left"></div>
+              <div class="robot-leg right"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-feature-section" style="padding: 70px 5%; background: linear-gradient(180deg, #120910 0%, #090914 100%); color: #fff;">
+        <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+          <p style="color: #ff9a9a; letter-spacing: 1.7px; text-transform: uppercase; font-size: .75rem; margin-bottom: 8px;">Enterprise-grade output</p>
+          <h2 style="font-size: clamp(1.9rem, 6vw, 2.9rem); margin-bottom: 16px;">Production-ready execution from strategy to deployment</h2>
+          <p style="color: #c3c8d8; max-width: 800px; margin: 0 auto 30px;">We deliver end-to-end SaaS & brand growth systems with modern architecture, high availability, and minimal maintenance overhead.</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 24px;">
+            <div style="background:#1e1f2e; border:1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 18px;">
+              <h3 style="margin-bottom:8px; color:#fff;">99.9% uptime</h3>
+              <p style="color:#cfd4e2; font-size:.9rem;">Resilient hosting architecture with auto scaling and monitoring.</p>
+            </div>
+            <div style="background:#1e1f2e; border:1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 18px;">
+              <h3 style="margin-bottom:8px; color:#fff;">Security first</h3>
+              <p style="color:#cfd4e2; font-size:.9rem;">Built with secure API and encryption best practices from day one.</p>
+            </div>
+            <div style="background:#1e1f2e; border:1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 18px;">
+              <h3 style="margin-bottom:8px; color:#fff;">Rapid launch</h3>
+              <p style="color:#cfd4e2; font-size:.9rem;">Agile release cycles and clear milestones for faster GTM delivery.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-trust-section" style="background:#09090f; padding: 80px 5%;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:20px;">
+            <h2 style="color:#fff; font-size:clamp(1.8rem, 5vw, 2.8rem); margin:0;">Trusted by ambitious brands</h2>
+            <a href="#" class="btn-main" style="font-size:.85rem; padding:.65rem 1.2rem; border-radius:10px;">Book project audit</a>
+          </div>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px;">
+            <div style="background:#1b1d2f; border-radius: 14px; border:1px solid rgba(255,255,255,.08); padding:16px;"><strong>Fintech</strong><br /><small style="color:#b9bdd0;">High-volume payment platform</small></div>
+            <div style="background:#1b1d2f; border-radius: 14px; border:1px solid rgba(255,255,255,.08); padding:16px;"><strong>D2C</strong><br /><small style="color:#b9bdd0;">Omni-channel growth engine</small></div>
+            <div style="background:#1b1d2f; border-radius: 14px; border:1px solid rgba(255,255,255,.08); padding:16px;"><strong>EdTech</strong><br /><small style="color:#b9bdd0;">Scale-ready learning platform</small></div>
+            <div style="background:#1b1d2f; border-radius: 14px; border:1px solid rgba(255,255,255,.08); padding:16px;"><strong>SaaS</strong><br /><small style="color:#b9bdd0;">Retention and product-led growth</small></div>
+          </div>
+        </div>
       </section>
 
       <section class="hww-premium-module" id="how-we-work">
@@ -1025,8 +1389,7 @@
               class="main-story-img"
             />
             <div class="experience-badge">
-              <span class="num">05+</span
-              ><span class="txt">Years of<br />Innovation</span>
+              <span class="num">05+</span><span class="txt">Years of<br />Innovation</span>
             </div>
           </div>
           <div class="story-card" id="story-card">
@@ -1038,6 +1401,47 @@
               engineering rigor to software and marketing, providing elite
               solutions for a global clientele.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-solutions">
+        <div style="text-align:center; margin-bottom:22px;">
+          <p style="color:#ff7f7f; letter-spacing:1px; text-transform:uppercase; font-size:.76rem;">What we build</p>
+          <h2 style="color:#111; font-size: clamp(1.8rem,6vw,2.8rem); margin:0;">Our solutions for growth and operation</h2>
+        </div>
+        <div class="solutions-grid">
+          <div class="solution-card"><h3>AI-Powered Automation</h3><p>Automate workflows, improve decisions and reduce costs with intelligent systems designed for your business.</p></div>
+          <div class="solution-card"><h3>Brand & Campaign Engine</h3><p>Build consistent, high-impact brand experiences across channels with data-tested marketing frameworks.</p></div>
+          <div class="solution-card"><h3>Scalable Cloud Platforms</h3><p>From MVP to enterprise, we build resilient cloud products with strong architecture and observability.</p></div>
+          <div class="solution-card"><h3>Growth & Retention Systems</h3><p>Design growth loops and retention pipelines that turn prospects into loyal customers and repeat revenue.</p></div>
+        </div>
+      </section>
+
+      <section class="about-process">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px; margin-bottom:18px;">
+          <div>
+            <p style="color:#ff7c7c; letter-spacing:1px; text-transform:uppercase; font-size:.75rem; margin:0;">How we work</p>
+            <h2 style="margin:8px 0 0;">From discovery to deployment</h2>
+          </div>
+          <a href="#" class="btn-main" style="font-size:.85rem; padding:.6rem 1rem;">Book Discovery</a>
+        </div>
+        <div class="process-steps">
+          <div class="step-box"><h3>1. Concept Strategy</h3><p>Understand your goals, audience and metrics to form a clear product roadmap and launch plan.</p></div>
+          <div class="step-box"><h3>2. Product Design</h3><p>Design modern, conversion-first interfaces with brand systems and seamless user journeys.</p></div>
+          <div class="step-box"><h3>3. Build & QA</h3><p>Ship with robust engineering, automated testing, and fast iterations until your product is market-ready.</p></div>
+          <div class="step-box"><h3>4. Scale & Optimize</h3><p>Operationalize growth with performance monitoring, optimization sprints, and ongoing strategic guidance.</p></div>
+        </div>
+      </section>
+
+      <section class="about-process" style="padding-top:20px;">
+        <div style="text-align:center; margin-bottom:16px;"><p style="color:#ff7c7c; letter-spacing:1px; text-transform:uppercase; font-size:.75rem; margin:0;">Timeline</p><h2 style="margin:8px 0 0;">Our journey so far</h2></div>
+        <div class="timeline-root">
+          <div class="timeline-list">
+            <article class="timeline-item"><time>2019</time><h4>Founded with robotics DNA</h4><p>Technick launched with a mission to bring engineering precision to digital products.</p></article>
+            <article class="timeline-item"><time>2020</time><h4>Scaled first SaaS product</h4><p>Delivered a secure SaaS platform with over 20k users in the first year.</p></article>
+            <article class="timeline-item"><time>2022</time><h4>Expanded to global marketing</h4><p>Added high-velocity growth systems and brand engineering services for global startups.</p></article>
+            <article class="timeline-item"><time>2025</time><h4>Enterprise-ready production</h4><p>Currently building production-grade platforms and marketing engines for scaling businesses.</p></article>
           </div>
         </div>
       </section>
@@ -1363,6 +1767,91 @@
       </section>
     </div>
 
+    <div id="contact" class="page">
+      <section class="contact-page">
+        <div style="text-align:center; margin-bottom:24px;">
+          <p style="text-transform:uppercase; letter-spacing:2px; color:#ff6f6f; font-size:.8rem;">Get in Touch</p>
+          <h2 style="font-size:clamp(2rem,6vw,3rem); margin:0;">Let's build your next luxury launch.</h2>
+        </div>
+        <div class="contact-inner">
+          <div class="contact-hero">
+            <h2>Contact Technick Soft Solutions</h2>
+            <p>Our team will respond within 24 hours. Share your challenge, growth goals, and timeline.</p>
+            <p style="margin-top:16px; color:#b7bad0;"><i class="fas fa-map-marker-alt"></i> Bangalore, India<br /><i class="fas fa-envelope"></i> hello@technicksoft.com<br /><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+          </div>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks! We will contact you shortly.');">
+            <label for="name">Full Name</label>
+            <input id="name" type="text" placeholder="Your name" required />
+            <label for="email">Business Email</label>
+            <input id="email" type="email" placeholder="you@company.com" required />
+            <label for="company">Company</label>
+            <input id="company" type="text" placeholder="Company name" />
+            <label for="message">Tell us about your project</label>
+            <textarea id="message" placeholder="Your brief" required></textarea>
+            <button type="submit">Send Inquiry</button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <div id="login" class="page">
+      <section class="auth-page">
+        <div class="auth-card">
+          <h2>Sign In to Technick</h2>
+          <p>Enter your credentials to access your agency dashboard.</p>
+          <form onsubmit="event.preventDefault(); alert('Signed in successfully');">
+            <input class="auth-input" type="email" placeholder="Work email" required />
+            <input class="auth-input" type="password" placeholder="Password" required />
+            <button class="auth-btn" type="submit">Sign In</button>
+          </form>
+          <div class="auth-bottom-text">New here? <a href="#" onclick="showPage('register')">Create account</a></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="register" class="page">
+      <section class="auth-page">
+        <div class="auth-card">
+          <h2>Create your account</h2>
+          <p>Start your premium consultation with Technick in minutes.</p>
+          <form onsubmit="event.preventDefault(); alert('Account created successfully');">
+            <input class="auth-input" type="text" placeholder="Full name" required />
+            <input class="auth-input" type="email" placeholder="Work email" required />
+            <input class="auth-input" type="password" placeholder="Create password" required />
+            <button class="auth-btn" type="submit">Create Account</button>
+          </form>
+          <div class="auth-bottom-text">Already have an account? <a href="#" onclick="showPage('login')">Sign In</a></div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <h4>Technick Soft Solutions</h4>
+          <p>Luxury digital products built for fast-growth teams, market leaders, and ambitious brands.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="#" onclick="showPage('home')">Home</a>
+            <a href="#" onclick="showPage('about')">About</a>
+            <a href="#" onclick="showPage('services')">Services</a>
+            <a href="#" onclick="showPage('contact')">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4>Follow</h4>
+          <div class="footer-links">
+            <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 Technick Soft Solutions · Crafted with precision</div>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
@@ -1388,6 +1877,25 @@
         track.addEventListener("mouseleave", () => loop.play());
       }
 
+      function initHeroRobotTracking() {
+        const robotWrap = document.getElementById("robotWrap");
+        const robot = document.getElementById("robot");
+        if (!robotWrap || !robot) return;
+
+        robotWrap.addEventListener("mousemove", (e) => {
+          const rect = robotWrap.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          const rotateY = x * 14;
+          const rotateX = -y * 12;
+          robot.style.transform = `rotateX(${20 + rotateX}deg) rotateY(${ -15 + rotateY}deg)`;
+        });
+
+        robotWrap.addEventListener("mouseleave", () => {
+          robot.style.transform = "rotateX(20deg) rotateY(-15deg)";
+        });
+      }
+
       function showPage(pageId) {
         document
           .querySelectorAll(".page")
@@ -1396,7 +1904,7 @@
           .querySelectorAll(".nav-link")
           .forEach((l) => l.classList.remove("active"));
         const activePage = document.getElementById(pageId);
-        activePage.classList.add("active-page");
+        if (activePage) activePage.classList.add("active-page");
         if (document.getElementById("link-" + pageId))
           document.getElementById("link-" + pageId).classList.add("active");
         window.scrollTo(0, 0);
@@ -1404,15 +1912,18 @@
         const tl = gsap.timeline();
 
         if (pageId === "home") {
-          // Hero Animations
-          tl.from(".hero-reveal", {
-            y: 150,
-            stagger: 0.15,
-            duration: 1,
-            ease: "power4.out",
-          }).to("#hero-p", { opacity: 1, y: -10, duration: 0.8 }, "-=0.5");
+          tl.from(".hero-content", {
+            opacity: 0,
+            y: 30,
+            duration: 0.9,
+            ease: "power3.out",
+          });
+          tl.from(
+            "#robot",
+            { opacity: 0, y: 20, duration: 0.8, ease: "power3.out" },
+            "-=0.6",
+          );
 
-          // How We Work Scroll Trigger
           gsap
             .timeline({
               scrollTrigger: {
@@ -1440,7 +1951,6 @@
               "-=0.6",
             );
 
-          // Initialize Tech Slider
           initTechSlider();
         } else if (pageId === "about") {
           tl.from(".about-reveal", {
@@ -1471,7 +1981,10 @@
           );
         }
       }
-      window.onload = () => showPage("home");
+      window.onload = () => {
+        showPage("home");
+        initHeroRobotTracking();
+      };
     </script>
   </body>
 </html>
